@@ -1,5 +1,4 @@
 import { IconButton, Typography, Button, Hidden } from "@material-ui/core";
-import { useHomeStyles } from "../pages/Home";
 
 import SearchIcon from "@material-ui/icons/Search";
 import CreateIcon from "@material-ui/icons/Create";
@@ -9,6 +8,7 @@ import MailOutlineIcon from "@material-ui/icons/MailOutline";
 import PersonOutlineIcon from "@material-ui/icons/PersonOutline";
 import BookmarkBorderIcon from "@material-ui/icons/BookmarkBorder";
 import NotificationsNoneIcon from "@material-ui/icons/NotificationsNone";
+import { useHomeStyles } from "../pages/Home/useHomeStyles";
 
 interface SideMenuProps {
   classes: ReturnType<typeof useHomeStyles>;

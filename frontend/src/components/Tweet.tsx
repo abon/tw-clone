@@ -13,7 +13,7 @@ import CommentIcon from "@material-ui/icons/ChatBubbleOutlineOutlined";
 import RepostIcon from "@material-ui/icons/Repeat";
 import LikeIcon from "@material-ui/icons/FavoriteBorder";
 import ReplyIcon from "@material-ui/icons/Reply";
-import { useHomeStyles } from "../pages/Home";
+import { useHomeStyles } from "../pages/Home/useHomeStyles";
 
 interface TweetProps {
   text: string;

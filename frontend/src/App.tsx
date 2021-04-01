@@ -1,6 +1,6 @@
 import { Route, Switch } from "react-router";
-import { SignIn } from "./pages/SignIn";
 import { Home } from "./pages/Home";
+import { SignIn } from "./pages/SignIn";
 
 const App: React.FC = (): React.ReactElement => {
   return (
