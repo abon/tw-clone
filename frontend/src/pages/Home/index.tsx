@@ -1,37 +1,21 @@
-import cn from "classnames";
 import {
   Grid,
   Paper,
   Typography,
-  makeStyles,
   Container,
-  withStyles,
-  createStyles,
-  InputBase,
-  Theme,
-  IconButton,
   InputAdornment,
-  TextField,
   ListItem,
   Divider,
-  ListItemAvatar,
-  Avatar,
   ListItemText,
   List,
-  Button,
-  TextareaAutosize,
-  CircularProgress,
 } from "@material-ui/core";
-import { Tweet } from "../../components/Tweet";
-import { SideMenu } from "../../components/SideMenu";
 
 import SearchIcon from "@material-ui/icons/Search";
-import PersonAddIcon from "@material-ui/icons/PersonAdd";
-import ImageOutlinedIcon from "@material-ui/icons/ImageOutlined";
-import EmojiIcon from "@material-ui/icons/EmojiEmotionsOutlined";
-import React from "react";
-import { AddTweetForm } from "../../components/AddTweetForm";
+
+import { Tweet } from "../../components/Tweet";
 import { useHomeStyles } from "./useHomeStyles";
+import { SideMenu } from "../../components/SideMenu";
+import { AddTweetForm } from "../../components/AddTweetForm";
 import { SearchTextField } from "../../components/SearchTextField";
 
 export const Home: React.FC = (): React.ReactElement => {
@@ -49,10 +33,12 @@ export const Home: React.FC = (): React.ReactElement => {
               <Typography variant="h6">Home</Typography>
             </Paper>
             <Paper>
-              <AddTweetForm
-                classes={classes}
-                //  maxRows={15}
-              />
+              <div className={classes.addForm}>
+                <AddTweetForm
+                  classes={classes}
+                  //  maxRows={15}
+                />
+              </div>
             </Paper>
             {[
               ...new Array(10).fill(

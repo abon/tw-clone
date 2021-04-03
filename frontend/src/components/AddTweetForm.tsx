@@ -1,4 +1,4 @@
-import React, { ReactEventHandler, useState } from "react";
+import React, { useState } from "react";
 import cn from "classnames";
 
 import Avatar from "@material-ui/core/Avatar/Avatar";
@@ -13,21 +13,23 @@ import { useHomeStyles } from "../pages/Home/useHomeStyles";
 
 interface AddTweetFormProps {
   classes: ReturnType<typeof useHomeStyles>;
+  maxRows?: number;
 }
 
-const MAX_LENGTH = 280;
+const MAX_LENGTH = 100;
 
 export const AddTweetForm: React.FC<AddTweetFormProps> = ({
   classes,
+  maxRows,
 }: AddTweetFormProps): React.ReactElement => {
   const [text, setText] = useState<string>("");
-  const textLimitPercent = (text.length / 280) * 100;
+  const textLimitPercent = (text.length / 100) * 100;
   const textCount = text.length - MAX_LENGTH;
 
   const handleChangeTextArea = (
     e: React.FormEvent<HTMLTextAreaElement>
   ): void => {
-    if (e.currentTarget && text.length <= 280) {
+    if (e.currentTarget && text.length <= 100) {
       setText(e.currentTarget.value);
     }
   };
@@ -46,7 +48,7 @@ export const AddTweetForm: React.FC<AddTweetFormProps> = ({
           />
           <TextareaAutosize
             value={text}
-            // rowsMax={maxRows}
+            rowsMax={maxRows}
             onChange={handleChangeTextArea}
             className={classes.addFormTextarea}
             placeholder="What is happening?"
@@ -70,7 +72,9 @@ export const AddTweetForm: React.FC<AddTweetFormProps> = ({
                     variant="static"
                     size={20}
                     thickness={4}
-                    value={text.length >= MAX_LENGTH ? 100 : textLimitPercent}
+                    value={
+                      text.length >= MAX_LENGTH - 1 ? 100 : textLimitPercent
+                    }
                     style={
                       text.length >= MAX_LENGTH ? { color: "red" } : undefined
                     }

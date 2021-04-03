@@ -1,14 +1,5 @@
-import React, { FC, ReactElement } from "react";
 import cn from "classnames";
-import {
-  Grid,
-  IconButton,
-  Typography,
-  Paper,
-  Container,
-  TextField,
-  Avatar,
-} from "@material-ui/core";
+import { IconButton, Typography, Paper, Avatar } from "@material-ui/core";
 import CommentIcon from "@material-ui/icons/ChatBubbleOutlineOutlined";
 import RepostIcon from "@material-ui/icons/Repeat";
 import LikeIcon from "@material-ui/icons/FavoriteBorder";
