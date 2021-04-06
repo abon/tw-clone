@@ -1,3 +1,6 @@
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
 import {
   Grid,
   Paper,
@@ -17,9 +20,18 @@ import { useHomeStyles } from "./useHomeStyles";
 import { SideMenu } from "../../components/SideMenu";
 import { AddTweetForm } from "../../components/AddTweetForm";
 import { SearchTextField } from "../../components/SearchTextField";
+import { fetchTweets } from "../../store/ducks/tweets/actionCreators";
+import { selectTweetsItems } from "../../store/ducks/tweets/selectors";
 
 export const Home: React.FC = (): React.ReactElement => {
+  const dispatch = useDispatch();
   const classes = useHomeStyles();
+
+  const tweets = useSelector(selectTweetsItems);
+
+  useEffect(() => {
+    dispatch(fetchTweets());
+  }, [dispatch]);
 
   return (
     <Container className={classes.wrapper} maxWidth="lg">
@@ -41,18 +53,14 @@ export const Home: React.FC = (): React.ReactElement => {
               </div>
             </Paper>
             {[
-              ...new Array(10).fill(
+              tweets.map((tweet) => (
                 <Tweet
-                  text="31 мартдан бошлаб «Фарғона – Истанбул – Фарғона» йўналишида авиақатнов йўлга қўйилди. Мунтазам рейслар чоршанба ва шанба кунлари амалга оширилади."
+                  key={tweet._id}
+                  text={tweet.text}
                   classes={classes}
-                  user={{
-                    fullname: "Abdullah",
-                    username: "@im_abon",
-                    avatarUrl:
-                      "https://images.unsplash.com/photo-1533227268428-f9ed0900fb3b?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=879&q=80",
-                  }}
+                  user={tweet.user}
                 />
-              ),
+              )),
             ]}
           </Paper>
         </Grid>
